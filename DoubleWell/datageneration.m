@@ -24,14 +24,13 @@ total =  (1/i) * K;
 
 for param = 1 : total
     committorstorage(param, :) = committor_2Well_in_1D(param * i);
-    inputstorage(param, :) = exp(Vpot(cos(pi*(0:200)/200)') * param * i * - 1);
+    inputstorage(param, :) = exp(Vpot( -1:.01:1) * param * i * - 1);
     betas(param, :) = zeros(1, 201) + param * i;
     tempo = param;
 
 end
 
 
-writematrix(acos(cos(pi*(0:200)/200)'), "chebygrid.csv")
 
 writematrix(inputstorage, 'thetainputs.csv')
 writematrix(betas, "betasdoublewell.csv")
